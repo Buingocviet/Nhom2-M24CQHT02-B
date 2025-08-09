@@ -6,8 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "build:local": "ng build  --configuration production --base-href /dist/dat-hang-phan-tan/ --deploy-url /dist/dat-hang-phan-tan/",
-    "build:github": "ng build --output-path docs --base-href /he-thong-phan-tan/",
-    "deploy": "ng deploy --base-href /he-thong-phan-tan/ --no-silent  --name NguyenTienDat --email datnt.it.pro@gmail.com",
+    "build:github": "ng build --output-path docs --base-href /Nhom2-M24CQHT02-B/",
+    "deploy": "ng deploy --base-href /Nhom2-M24CQHT02-B/ --no-silent  --name NguyenTienDat --email datnt.it.pro@gmail.com",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
