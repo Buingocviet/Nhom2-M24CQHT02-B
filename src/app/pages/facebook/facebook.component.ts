@@ -59,6 +59,8 @@ export class FacebookComponent implements OnInit, OnDestroy {
     this.firebaseService.loadSetting(() => {
       this.firebaseService.getCustomers().subscribe((ls) => {
         this.customersList = ls;
+        console.log(ls);
+
         this.getTableHeader();
       });
 
@@ -91,11 +93,13 @@ export class FacebookComponent implements OnInit, OnDestroy {
     const updateFunc = () => {
       this.firebaseService
         .fbUpdateProduct(update, event?.item?._id || '')
-        .pipe(takeUntil(this.$destroy),
-        catchError((err) => {
-          console.error('updateFunc err', err);
-          return of(null);
-        }))
+        .pipe(
+          takeUntil(this.$destroy),
+          catchError((err) => {
+            console.error('updateFunc err', err);
+            return of(null);
+          })
+        )
         .subscribe(() => {
           this.toastService.add({
             severity: 'success',
@@ -446,9 +450,9 @@ export class FacebookComponent implements OnInit, OnDestroy {
         takeUntil(this.$destroy),
         catchError((err) => {
           console.error('fbUpdateProducts err', err);
-          return of(null)
+          return of(null);
         }),
-        finalize(() => (this.isLoading = false)),
+        finalize(() => (this.isLoading = false))
       )
       .subscribe((res) => {
         this.toastService.showToastSuccess(`${mess} successfully!`);
